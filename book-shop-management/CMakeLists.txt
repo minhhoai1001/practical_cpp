@@ -20,6 +20,7 @@ add_executable(books_management
     src/books.cpp
     src/suppliers.cpp
     src/purchases.cpp
+    src/employees.cpp
 )
 
 target_link_libraries(books_management ${PQXX_LIB} ${PQ_LIB})

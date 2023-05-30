@@ -16,9 +16,9 @@ class employees
 	long int salary;
 	std::string mgr_status;	//check(T or F) def f
 public:
-	void add_emp();
-	void search_emp();
-	void assign_mgr_stat();
-	void display();
-	void update_sal();
+	void add_employees(std::unique_ptr<pqxx::connection> &Postgres);
+	void search_employees(std::unique_ptr<pqxx::connection> &Postgres);
+	void assign_mgr_stat(std::unique_ptr<pqxx::connection> &Postgres);
+	void display(std::unique_ptr<pqxx::connection> &Postgres);
+	void update_salary(std::unique_ptr<pqxx::connection> &Postgres);
 };

@@ -3,6 +3,7 @@
 #include "books.h"
 #include "suppliers.h"
 #include "purchases.h"
+#include "employees.h"
 
 // +--------------------------------+
 // |		Global Variable         |
@@ -126,7 +127,45 @@ void purchases_menu()
     }
 }
 
-void emp_menu();
+void employees_menu()
+{
+    int c;
+	employees e;
+	std::cout << "*************************************************" << std::endl;
+	std::cout << "                 EMPLOYEE MENU" << std::endl;
+	std::cout << "*************************************************" << std::endl;
+	std::cout << "   1. New Employee" << std::endl;
+	std::cout << "   2. Search Employee" << std::endl;
+	std::cout << "   3. Assign Manager" << std::endl;
+	std::cout << "   4. View All" << std::endl;
+	std::cout << "   5. Update Salary" << std::endl;
+	std::cout << "   6. RETURN TO MAIN MENU" << std::endl << std::endl;
+	std::cout << "Enter Your Choice : ";
+	std::cin >> c;
+	switch (c)
+	{
+		case 1:
+			e.add_employees(Postgres);
+			break;
+		case 2:
+			e.search_employees(Postgres);
+			break;
+		case 3:
+			e.assign_mgr_stat(Postgres);
+			break;
+		case 4:
+			e.display(Postgres);
+			break;
+		case 5:
+			e.update_salary(Postgres);
+			break;
+		case 6:
+			return;
+		default:
+			std::cout << "Wrong Input" << std::endl << "Invalid input";
+			break;
+	}
+}
 void mem_menu();
 void sal_menu();
 
@@ -161,10 +200,10 @@ void main_menu()
             system("clear");
             purchases_menu();
             break;
-        // case 4:
-        //     system("clear");
-        //     emp_menu();
-        //     break;
+        case 4:
+            system("clear");
+            employees_menu();
+            break;
         // case 5:
         //     system("clear");
         //     mem_menu();

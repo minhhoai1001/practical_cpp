@@ -4,6 +4,8 @@
 #include "suppliers.h"
 #include "purchases.h"
 #include "employees.h"
+#include "members.h"
+#include "sales.h"
 
 // +--------------------------------+
 // |		Global Variable         |
@@ -166,8 +168,66 @@ void employees_menu()
 			break;
 	}
 }
-void mem_menu();
-void sal_menu();
+
+// mem menu
+void member_menu()
+{
+	int c;
+	members m;
+	m.refresh(Postgres);
+	std::cout << "*************************************************" << std::endl;
+	std::cout << "                 MEMBERS MENU" << std::endl;
+	std::cout << "*************************************************" << std::endl;
+	std::cout << "   1. New Member" << std::endl;
+	std::cout << "   2. Search Member" << std::endl;
+	std::cout << "   3. RETURN TO MAIN MENU" << std::endl;
+	std::cout << "Enter Your Choice : ";
+	std::cin >> c;
+	switch (c)
+	{
+		case 1:
+			m.add_member(Postgres);
+			break;
+		case 2:
+			m.search_member(Postgres);
+			break;
+		case 3:
+			return;
+		default:
+			std::cout << "Wrong Input" << std::endl << "Invalid input";
+			break;
+	}
+}
+
+// sal_menu
+
+void sale_menu()
+{
+	int c;
+	sales s;
+	std::cout << "*************************************************" << std::endl;
+	std::cout << "                 SALES MENU" << std::endl;
+	std::cout << "*************************************************" << std::endl;
+	std::cout << "   1. Add New Bill" << std::endl;
+	std::cout << "   2. Total Sales Of The Year" << std::endl;
+	std::cout << "   3. RETURN TO MAIN MENU" << std::endl;
+	std::cout << "Enter Your Choice : ";
+	std::cin >> c;
+	switch (c)
+	{
+		case 1:
+			s.add(Postgres);
+			break;
+		case 2:
+			s.find_total_sales(Postgres);
+			break;
+		case 3:
+			return;
+		default:
+			std::cout << "Wrong Input" << std::endl << "Invalid input";
+			break;
+	}
+}
 
 // main menu
 
@@ -204,14 +264,14 @@ void main_menu()
             system("clear");
             employees_menu();
             break;
-        // case 5:
-        //     system("clear");
-        //     mem_menu();
-        //     break;
-        // case 6:
-        //     system("clear");
-        //     sal_menu();
-        //     break;
+        case 5:
+            system("clear");
+            member_menu();
+            break;
+        case 6:
+            system("clear");
+            sale_menu();
+            break;
         case 7:
             exit(1);
         default:

@@ -16,7 +16,7 @@ class members
 	date end_date;
 	std::string valid;
 public:
-	void add_mem();
-	void refresh();
-	void search_mem();
+	void add_member(std::unique_ptr<pqxx::connection> &Postgres);
+	void refresh(std::unique_ptr<pqxx::connection> &Postgres);
+	void search_member(std::unique_ptr<pqxx::connection> &Postgres);
 };

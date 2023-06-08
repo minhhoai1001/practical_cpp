@@ -12,6 +12,6 @@ class sales
 	int amount;
 	date date_s;
 public:
-	void add();
-	void find_total_sales();
+	void add(std::unique_ptr<pqxx::connection> &Postgres);
+	void find_total_sales(std::unique_ptr<pqxx::connection> &Postgres);
 };
